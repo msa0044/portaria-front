@@ -1,3 +1,63 @@
-body{
+body {
+    background-color: rgb(51, 51, 51);
+    font-family: Calibri;
     margin: 0px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#conteudo {
+    background-color: rgb(240, 240, 240);
+    width: 300px;
+    margin-top: 100px;
+    padding: 30px;
+    border-radius: 2px;
+}
+
+#titulo{
+    text-align: center;
+}
+
+.labels{
+    height: 20px;
+    padding: 5px 0px;
+}
+
+.campos {
+    height: 30px;
+    margin: 0px;
+    padding: 5px 15px;
+    border: 0px;
+    border-radius: 2px;
+    outline: 1px solid rgba(0, 0, 0, 0.3);
+}
+
+#setor{
+    height: 40px;
+}
+
+.row {
+    margin-top: 10px;
+}
+
+.flex{
+    display: flex;
+    flex-direction: column;
+}
+
+#cadastrar{
+    background-color: rgb(12, 107, 75);
+    color: white;
+    height: 40px;
+    margin-top: 30px;
+    padding: 5px;
+    border: 0px;
+    border-radius: 2px;
+    outline: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+#cadastrar:hover{
+    background-color: rgb(12, 107, 75, 0.9);
+    cursor: pointer;
 }

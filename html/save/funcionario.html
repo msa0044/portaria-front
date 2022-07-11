@@ -7,28 +7,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cadastrar Funcionário</title>
     <link rel="stylesheet" href="../../css/save.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="../../javascript/save.js"></script>
 </head>
 
 <body>
-    <div id="all">
+    <div id="conteudo">
         <form action="">
+            <h3 id="titulo">Cadastrar Funcionário</h3>
             <div class="row">
                 <div class="flex">
-                    <label class="campos" for="">Crachá</label>
-                    <input type="text" class="campos">
+                    <label class="labels" for="">Crachá</label>
+                    <input  id="cracha" type="text" class="campos">
                 </div>
             </div>
             <div class="row">
                 <div class="flex">
-                    <label class="campos" for="">Nome</label>
-                    <input type="text" class="campos">
+                    <label class="labels" for="">Nome</label>
+                    <input id="nome" type="text" class="campos">
                 </div>
             </div>
             <div class="row">
                 <div class="flex">
-                    <label class="campos" for="">Setor</label>
-                    <select name="" class="campos">
+                    <label class="labels" for="">Setor</label>
+                    <select id="setor" name="" class="campos">
                         <option value="Vendas">Vendas</option>
                         <option value="Almoxarifado">Almoxarifado</option>
                         <option value="Departamento Pessoal">Departamento Pessoal</option>
@@ -47,8 +49,7 @@
             </div>
             <div class="row">
                 <div class="flex">
-                    <label class="campos" for="" onkeypress="limitar();">Saldo de horas</label>
-                    <input type="number" class="campos">
+                    <button id="cadastrar" type="button" onclick="criarObjeto()">Cadastrar</button>
                 </div>
             </div>
         </form>
