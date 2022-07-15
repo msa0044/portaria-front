@@ -1,41 +1,30 @@
 function post(data) {
     console.log(data);
+
     fetch("http://localhost:8080/funcionario", {
         method: "POST",
         headers: {
-            "Content-Type": "application/json",
-            "Access-Control-Allow-Headers" : "Content-Type",
-            "Access-Control-Allow-Origin": "http://localhost:8080",
-            "Access-Control-Allow-Methods": "OPTIONS,POST,GET"
+            "Content-Type": "application/json"
         },
         body: JSON.stringify(data),
     }).then((promisseResponse) =>  {
         console.log(promisseResponse);
         if(promisseResponse.status == 200 || promisseResponse.status == 201) {
             promisseResponse.json().then((response) => {
-                // console.log(response.body)
-                console.log(response.uri)
+                console.log(response)
             });
         } else {
             alert('Erro')
         }
-        
+
     })
     .catch((error) => {
         console.error("Error:", error);
     });
-        
-}
-
-function teste(response) {
 
 }
 
-teste(response => {
-
-})
-
-function criarObjeto() {    
+function criarObjeto() {
     var obj = {
         "id": null,
         "cracha": "",
@@ -49,3 +38,7 @@ function criarObjeto() {
 
     post(obj);
 }
+
+// window.onload = function(){
+//     $("#data").val("00000000")
+// }
