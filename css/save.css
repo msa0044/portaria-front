@@ -9,17 +9,17 @@ body {
 
 #conteudo {
     background-color: rgb(240, 240, 240);
-    width: 300px;
+    width: 400px;
     margin-top: 100px;
     padding: 30px;
     border-radius: 2px;
 }
 
-#titulo{
+#titulo {
     text-align: center;
 }
 
-.labels{
+.labels {
     height: 20px;
     padding: 5px 0px;
 }
@@ -33,23 +33,31 @@ body {
     outline: 1px solid rgba(0, 0, 0, 0.3);
 }
 
-#setor{
+#setor {
     height: 40px;
 }
-option{
+
+#setor:disabled {
+    background-color: rgb(240, 240, 240);
+}
+
+option {
     padding: 5px;
 }
 
 .row {
-    margin-top: 10px;
+    display: flex;
+    flex-direction: row;
+    margin: 10px 0px 0px 0px;
 }
 
-.flex{
+.flex {
+    padding: 0px;
     display: flex;
     flex-direction: column;
 }
 
-#cadastrar{
+#cadastrar {
     background-color: rgb(12, 107, 75);
     color: white;
     height: 40px;
@@ -60,7 +68,20 @@ option{
     outline: 1px solid rgba(255, 255, 255, 0.3);
 }
 
-#cadastrar:hover{
+#cadastrar:hover {
     background-color: rgb(12, 107, 75, 0.9);
     cursor: pointer;
+}
+
+.horas-linha{
+    margin: 10px 0px 0px 0px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.horas-coluna{
+    width: 48%;
+    display: flex;
+    flex-direction: column;
 }

@@ -21,23 +21,26 @@
             <h3 id="titulo">Entradas</h3>
             <div class="row">
                 <div class="flex">
-                    <input id="data" type="date" required max="9999-12-30" class="campos" placeholder="Data" maxlength="10">
+                    <label>Data:</label>
+                    <input id="data" type="date" required max="9999-12-30" class="campos" maxlength="10">
                 </div>
             </div>
             <div class="row">
                 <div class="flex">
-                    <input id="cracha" type="text" required class="campos" placeholder="Crachá">
+                    <label>Crachá:</label>
+                    <input id="cracha" type="text" required class="campos"  maxlength="8">
                 </div>
             </div>
             <div class="row">
                 <div class="flex">
-                    <input id="nome" type="text" required class="campos" placeholder="Nome do funcionário">
+                    <label>Funcionário:</label>
+                    <input id="nome" type="text" disabled required class="campos">
                 </div>
             </div>
             <div class="row">
                 <div class="flex">
-                    <select id="setor" name="setor" class="campos" required>
-                        <option value="" disabled selected hidden>Setor</option>
+                    <label>Setor:</label>
+                    <select id="setor" name="setor" class="campos" disabled required>
                         <option value="Vendas">Vendas</option>
                         <option value="Almoxarifado">Almoxarifado</option>
                         <option value="Departamento Pessoal">Departamento Pessoal</option>
@@ -54,9 +57,28 @@
                     </select>
                 </div>
             </div>
+            <div class="horas-linha">
+                <div class="horas-coluna">
+                    <label>Entrar às:</label>
+                    <input id="horaentrada" type="time" required class="campos" placeholder="horas">
+                </div>
+                <div class="horas-coluna">
+                    <label>Sair às:</label>
+                    <input id="horasaida" type="time" required" class="campos" placeholder="horas">
+                </div>
+            </div>
             <div class="row">
                 <div class="flex">
-                    <button id="cadastrar" type="submit">Cadastrar</button>
+                    <label>Modalidade:</label>
+                    <select id="modalidade" name="modalidade" class="campos" required>
+                        <option value="BancoDeHoras">Banco de horas</option>
+                        <option value="HoraExtra">Hora extra</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row">
+                <div class="flex">
+                    <button id="cadastrar" type="button">Cadastrar</button>
                 </div>
             </div>
         </form>

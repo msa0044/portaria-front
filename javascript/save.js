@@ -39,6 +39,5 @@ function criarObjeto() {
     post(obj);
 }
 
-// window.onload = function(){
-//     $("#data").val("00000000")
-// }
+window.onload = function(){
+}
