@@ -36,8 +36,23 @@ function criarObjeto() {
     obj.nome = $("#nome")[0].value
     obj.setor = $("#setor")[0].value
 
-    post(obj);
+    post(obj)
 }
 
+
+let barraAtiva = false
+
 window.onload = function(){
+}
+
+
+function mudarBarra(){
+    if(barraAtiva){
+        $("#conteudo")[0].style.display = "none";
+        $("#btn-cadastrar")[0].style.display = "block";
+    }else if(!barraAtiva){
+        $("#conteudo")[0].style.display = "flex";
+        $("#btn-cadastrar")[0].style.display = "none";
+    }
+    barraAtiva = !barraAtiva
 }

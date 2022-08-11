@@ -6,82 +6,476 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cadastrar Funcionário</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.0-beta1/css/bootstrap.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
     <link rel="stylesheet" href="../../css/save.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.0-beta1/js/bootstrap.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.0-beta1/js/bootstrap.bundle.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
     <script src="../../javascript/save.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.0-beta1/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../../css/save.css">
 </head>
 
-<body>
-    <div id="conteudo">
-        <form action="" onsubmit="criarObjeto()">
-            <h3 id="titulo">Entradas</h3>
-            <div class="row">
-                <div class="flex">
-                    <label>Data:</label>
-                    <input id="data" type="date" required max="9999-12-30" class="campos" maxlength="10">
-                </div>
+<body class="col-12">
+    <nav id="navbar" class="col-12 navbar navbar-expand-lg">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Portaria</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            Cadastro
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#">Cadastrar Entrada</a></li>
+                            <li><a class="dropdown-item" href="#">Cadastrar Funcionário</a></li>
+                        </ul>
+                    </li>
+                </ul>
             </div>
-            <div class="row">
-                <div class="flex">
-                    <label>Crachá:</label>
-                    <input id="cracha" type="text" required class="campos"  maxlength="8">
-                </div>
+        </div>
+    </nav>
+    <div id="tela" class="col-12">
+        <div id="barra-cadastro" class="col-12">
+            <button id="btn-cadastrar" class="col-10 btn btn-outline-success" onclick="mudarBarra()">Cadastrar nova
+                entrada <i class="fa fa-add"></i></button>
+            <div id="conteudo" class="col-10">
+                <form class="form col-10" onsubmit="criarObjeto()">
+                    <h3 class="title col-12" id="titulo">Nova entrada</h3>
+                    <div class="row">
+                        <div class="flex form-floating">
+                            <input id="data" type="date" required max="9999-12-30" class="form-control campos"
+                                maxlength="10">
+                            <label>Data:</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="flex form-floating">
+                            <input id="cracha" type="text" required class="form-control campos" maxlength="8">
+                            <label>Crachá:</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="flex form-floating">
+                            <input id="funcionario" type="text" disabled required class="form-control campos">
+                            <label>Funcionário:</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="flex form-floating">
+                            <select id="setor" name="setor" class=" form-control campos" required disabled>
+                                <option value="Vendas">Vendas</option>
+                                <option value="Almoxarifado">Almoxarifado</option>
+                                <option value="Departamento Pessoal">Departamento Pessoal</option>
+                                <option value="Expedição">Expedição</option>
+                                <option value="Ferramentaria">Ferramentaria</option>
+                                <option value="Financeiro">Financeiro</option>
+                                <option value="Logística">Logística</option>
+                                <option value="Manutenção">Manutenção</option>
+                                <option value="Molas">Molas</option>
+                                <option value="Qualidade">Qualidade</option>
+                                <option value="Recursos Humanos">Recursos Humanos</option>
+                                <option value="Segurança do Trabalho">Segurança do Trabalho</option>
+                                <option value="Tecnologia da Informação">Tecnologia da Informação</option>
+                            </select>
+                            <label>Setor:</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="flex form-floating col-6">
+                            <input id="horaentrada" type="time" required class="form-control campos"
+                                placeholder="horas">
+                            <label>Entrar às:</label>
+                        </div>
+                        <div class="flex form-floating col-6">
+                            <input id="horaSaída" type="time" required" class="form-control campos" placeholder="horas">
+                            <label>Sair às:</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="flex form-floating">
+                            <select id="modalidade" name="modalidade" class="form-select campos" required>
+                                <option value="BancoDeHoras">Banco de horas</option>
+                                <option value="HoraExtra">Hora extra</option>
+                            </select>
+                            <label>Modalidade:</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div id="btns-cadastro" class="flex">
+                            <button id="btn-fechar" type="button" class="col-2 btn btn-outline-danger"
+                                onclick="mudarBarra()"><i class="fa fa-close"></i> Fechar</button>
+                            <button id="btn-cadastrar" type="button" class="col-2 btn btn-outline-success"
+                                onclick="criarObjeto()"><i class="fa fa-add"></i> Adicionar</button>
+                        </div>
+                    </div>
+                </form>
             </div>
-            <div class="row">
-                <div class="flex">
-                    <label>Funcionário:</label>
-                    <input id="nome" type="text" disabled required class="campos">
-                </div>
-            </div>
-            <div class="row">
-                <div class="flex">
-                    <label>Setor:</label>
-                    <select id="setor" name="setor" class="campos" disabled required>
-                        <option value="Vendas">Vendas</option>
-                        <option value="Almoxarifado">Almoxarifado</option>
-                        <option value="Departamento Pessoal">Departamento Pessoal</option>
-                        <option value="Expedição">Expedição</option>
-                        <option value="Ferramentaria">Ferramentaria</option>
-                        <option value="Financeiro">Financeiro</option>
-                        <option value="Logística">Logística</option>
-                        <option value="Manutenção">Manutenção</option>
-                        <option value="Molas">Molas</option>
-                        <option value="Qualidade">Qualidade</option>
-                        <option value="Recursos Humanos">Recursos Humanos</option>
-                        <option value="Segurança do Trabalho">Segurança do Trabalho</option>
-                        <option value="Tecnologia da Informação">Tecnologia da Informação</option>
-                    </select>
-                </div>
-            </div>
-            <div class="horas-linha">
-                <div class="horas-coluna">
-                    <label>Entrar às:</label>
-                    <input id="horaentrada" type="time" required class="campos" placeholder="horas">
-                </div>
-                <div class="horas-coluna">
-                    <label>Sair às:</label>
-                    <input id="horasaida" type="time" required" class="campos" placeholder="horas">
-                </div>
-            </div>
-            <div class="row">
-                <div class="flex">
-                    <label>Modalidade:</label>
-                    <select id="modalidade" name="modalidade" class="campos" required>
-                        <option value="BancoDeHoras">Banco de horas</option>
-                        <option value="HoraExtra">Hora extra</option>
-                    </select>
-                </div>
-            </div>
-            <div class="row">
-                <div class="flex">
-                    <button id="cadastrar" type="button">Cadastrar</button>
-                </div>
-            </div>
-        </form>
+        </div>
+    </div>
+    <div id="div-table" class="col-12">
+        <table id="tab" class="table col-12">
+            <tr id="tr-titles">
+                <th>
+                    Data
+                </th>
+                <th>
+                    Crachá
+                </th>
+                <th>
+                    Funcionário
+                </th>
+                <th>
+                    Setor
+                </th>
+                <th>
+                    Entrada
+                </th>
+                <th>
+                    Saída
+                </th>
+                <th>
+                    Modalidade
+                </th>
+                <th>
+                    Entrada registrada
+                </th>
+                <th>
+                    Saída Registrada
+                </th>
+                <th>
+                    Horas Registradas
+                </th>
+            </tr>
+            <tr>
+                <th>
+                    Data
+                </th>
+                <th>
+                    Crachá
+                </th>
+                <th>
+                    Funcionário
+                </th>
+                <th>
+                    Setor
+                </th>
+                <th>
+                    Entrada
+                </th>
+                <th>
+                    Saída
+                </th>
+                <th>
+                    Modalidade
+                </th>
+                <th>
+                    Entrada registrada
+                </th>
+                <th>
+                    Saída Registrada
+                </th>
+                <th>
+                    Horas Registradas
+                </th>
+            </tr>
+            <tr>
+                <th>
+                    Data
+                </th>
+                <th>
+                    Crachá
+                </th>
+                <th>
+                    Funcionário
+                </th>
+                <th>
+                    Setor
+                </th>
+                <th>
+                    Entrada
+                </th>
+                <th>
+                    Saída
+                </th>
+                <th>
+                    Modalidade
+                </th>
+                <th>
+                    Entrada registrada
+                </th>
+                <th>
+                    Saída Registrada
+                </th>
+                <th>
+                    Horas Registradas
+                </th>
+            </tr>
+            <tr>
+                <th>
+                    Data
+                </th>
+                <th>
+                    Crachá
+                </th>
+                <th>
+                    Funcionário
+                </th>
+                <th>
+                    Setor
+                </th>
+                <th>
+                    Entrada
+                </th>
+                <th>
+                    Saída
+                </th>
+                <th>
+                    Modalidade
+                </th>
+                <th>
+                    Entrada registrada
+                </th>
+                <th>
+                    Saída Registrada
+                </th>
+                <th>
+                    Horas Registradas
+                </th>
+            </tr>
+            <tr>
+                <th>
+                    Data
+                </th>
+                <th>
+                    Crachá
+                </th>
+                <th>
+                    Funcionário
+                </th>
+                <th>
+                    Setor
+                </th>
+                <th>
+                    Entrada
+                </th>
+                <th>
+                    Saída
+                </th>
+                <th>
+                    Modalidade
+                </th>
+                <th>
+                    Entrada registrada
+                </th>
+                <th>
+                    Saída Registrada
+                </th>
+                <th>
+                    Horas Registradas
+                </th>
+            </tr>
+            <tr>
+                <th>
+                    Data
+                </th>
+                <th>
+                    Crachá
+                </th>
+                <th>
+                    Funcionário
+                </th>
+                <th>
+                    Setor
+                </th>
+                <th>
+                    Entrada
+                </th>
+                <th>
+                    Saída
+                </th>
+                <th>
+                    Modalidade
+                </th>
+                <th>
+                    Entrada registrada
+                </th>
+                <th>
+                    Saída Registrada
+                </th>
+                <th>
+                    Horas Registradas
+                </th>
+            </tr>
+            <tr>
+                <th>
+                    Data
+                </th>
+                <th>
+                    Crachá
+                </th>
+                <th>
+                    Funcionário
+                </th>
+                <th>
+                    Setor
+                </th>
+                <th>
+                    Entrada
+                </th>
+                <th>
+                    Saída
+                </th>
+                <th>
+                    Modalidade
+                </th>
+                <th>
+                    Entrada registrada
+                </th>
+                <th>
+                    Saída Registrada
+                </th>
+                <th>
+                    Horas Registradas
+                </th>
+            </tr>
+            <tr>
+                <th>
+                    Data
+                </th>
+                <th>
+                    Crachá
+                </th>
+                <th>
+                    Funcionário
+                </th>
+                <th>
+                    Setor
+                </th>
+                <th>
+                    Entrada
+                </th>
+                <th>
+                    Saída
+                </th>
+                <th>
+                    Modalidade
+                </th>
+                <th>
+                    Entrada registrada
+                </th>
+                <th>
+                    Saída Registrada
+                </th>
+                <th>
+                    Horas Registradas
+                </th>
+            </tr>
+            <tr>
+                <th>
+                    Data
+                </th>
+                <th>
+                    Crachá
+                </th>
+                <th>
+                    Funcionário
+                </th>
+                <th>
+                    Setor
+                </th>
+                <th>
+                    Entrada
+                </th>
+                <th>
+                    Saída
+                </th>
+                <th>
+                    Modalidade
+                </th>
+                <th>
+                    Entrada registrada
+                </th>
+                <th>
+                    Saída Registrada
+                </th>
+                <th>
+                    Horas Registradas
+                </th>
+            </tr>
+            <tr>
+                <th>
+                    Data
+                </th>
+                <th>
+                    Crachá
+                </th>
+                <th>
+                    Funcionário
+                </th>
+                <th>
+                    Setor
+                </th>
+                <th>
+                    Entrada
+                </th>
+                <th>
+                    Saída
+                </th>
+                <th>
+                    Modalidade
+                </th>
+                <th>
+                    Entrada registrada
+                </th>
+                <th>
+                    Saída Registrada
+                </th>
+                <th>
+                    Horas Registradas
+                </th>
+            </tr>
+            <tr>
+                <th>
+                    Data
+                </th>
+                <th>
+                    Crachá
+                </th>
+                <th>
+                    Funcionário
+                </th>
+                <th>
+                    Setor
+                </th>
+                <th>
+                    Entrada
+                </th>
+                <th>
+                    Saída
+                </th>
+                <th>
+                    Modalidade
+                </th>
+                <th>
+                    Entrada registrada
+                </th>
+                <th>
+                    Saída Registrada
+                </th>
+                <th>
+                    Horas Registradas
+                </th>
+            </tr>
+        </table>
     </div>
 </body>
 

@@ -1,27 +1,59 @@
-body {
-    background-color: rgb(51, 51, 51);
-    font-family: Calibri;
+body{
+    font-family: Montserrat;
     margin: 0px;
+}
+
+*::selection, .form-control {
+    background: rgb(12, 107, 75);
+    color: white;
+}
+
+.navbar *, h3 {
+    color: rgb(12, 107, 75);
+}
+
+#tela {
+    background-color: rgb(211, 211, 211);
     display: flex;
+}
+
+#barra-cadastro {
+    color: rgb(230, 230, 230);
+    padding: 40px;
+    background-color: rgb(41, 41, 41);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+
+#conteudo {
+    border-radius: 5px;
+    background-color: rgb(255, 255, 255);
+    display: none;
     justify-content: center;
     align-items: center;
 }
 
-#conteudo {
-    background-color: rgb(240, 240, 240);
-    width: 400px;
-    margin-top: 100px;
+form {
     padding: 30px;
-    border-radius: 2px;
 }
 
 #titulo {
     text-align: center;
 }
 
-.labels {
-    height: 20px;
-    padding: 5px 0px;
+label {
+    color: rgb(11, 79, 124);
+}
+
+input {
+}
+
+option {
+    padding: 5px;
+    color: rgb(55, 179, 158);
 }
 
 .campos {
@@ -29,21 +61,35 @@ body {
     margin: 0px;
     padding: 5px 15px;
     border: 0px;
-    border-radius: 2px;
-    outline: 1px solid rgba(0, 0, 0, 0.3);
+    border-radius: 5px;
 }
 
-#setor {
-    height: 40px;
+
+.form-select {
+    color: rgb(124, 216, 201);
+    background-color: rgb(245, 245, 245);
 }
 
-#setor:disabled {
-    background-color: rgb(240, 240, 240);
+
+.form-control {
+    color: rgb(124, 216, 201);
+    background-color: rgb(245, 245, 245);
+    border-radius: 5px;
 }
 
-option {
-    padding: 5px;
+
+.form-control:focus {
+    color: rgb(124, 216, 201);
+    background-color: rgb(245, 245, 245);
+    border-radius: 5px;
 }
+
+.form-control:disabled {
+    background-color: rgb(235, 235, 235);
+    opacity: 1;
+    color: rgb(180, 180, 180);
+}
+
 
 .row {
     display: flex;
@@ -54,34 +100,49 @@ option {
 .flex {
     padding: 0px;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
 }
 
-#cadastrar {
+#horaentrada, #horasaida {
+    border-radius: 0px 5px 5px 0px;
+}
+
+#horaentrada {
+    margin-right: 5px;
+    border-radius: 5px 0px 0px 5px;
+}
+
+#horasaida {
+    border-radius: 0px 5px 5px 0px;
+}
+
+#btns-cadastro {
+    margin-top: 20px;
+    justify-content: right;
+}
+
+#btn-fechar {}
+
+#btn-cadastrar {
+    margin-left: 10px;
+}
+
+#div-table{
+    padding: 20px;
+    background-color: rgb(230, 230, 230);
+}
+
+#tab {
+    border-radius: 5px 5px 0px 0px;
+    padding: 20px;
+    margin: 0px;
+}
+
+tr:nth-child(odd){
+    background-color: rgb(240, 240, 240);
+}
+
+#tr-titles{
     background-color: rgb(12, 107, 75);
     color: white;
-    height: 40px;
-    margin-top: 30px;
-    padding: 5px;
-    border: 0px;
-    border-radius: 2px;
-    outline: 1px solid rgba(255, 255, 255, 0.3);
-}
-
-#cadastrar:hover {
-    background-color: rgb(12, 107, 75, 0.9);
-    cursor: pointer;
-}
-
-.horas-linha{
-    margin: 10px 0px 0px 0px;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-}
-
-.horas-coluna{
-    width: 48%;
-    display: flex;
-    flex-direction: column;
 }
