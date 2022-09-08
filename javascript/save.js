@@ -1,50 +1,44 @@
-function post(data) {
-    console.log(data);
-
-    fetch("http://localhost:8080/funcionario", {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify(data),
-    }).then((promisseResponse) =>  {
-        console.log(promisseResponse);
-        if(promisseResponse.status == 200 || promisseResponse.status == 201) {
-            promisseResponse.json().then((response) => {
-                console.log(response)
-            });
-        } else {
-            alert('Erro')
-        }
-
-    })
-    .catch((error) => {
-        console.error("Error:", error);
-    });
-
-}
-
-function criarObjeto() {
-    var obj = {
-        "id": null,
-        "cracha": "",
-        "nome": "",
-        "setor": ""
-    };
-
-    obj.cracha = $("#cracha")[0].value
-    obj.nome = $("#nome")[0].value
-    obj.setor = $("#setor")[0].value
-
-    post(obj)
-}
-
-
 let barraAtiva = false
 
 window.onload = function(){
 }
 
+function getOne(cracha){
+    $.get("http://localhost:8080/funcionario/get/id/"+cracha, function(resultado){
+        console.log(resultado);
+        $("#funcionario").val(resultado.nome);
+        $("#setor").val(resultado.setor);
+   })
+}
+
+function post(data) {
+    $.ajax({
+        method: "POST",
+        url: "http://localhost:8080/funcionario/txt",
+        data,
+       })
+
+
+        // $.post(
+        // "http://localhost:8080/funcionario",
+        // JSON.stringify(data),
+        // function(data,status,xhr){
+        //     console.log(data);
+        //     console.log(status);
+        //     console.log(xhr.responseText);
+        // },
+        // "json")
+}
+
+function criarObjeto() {
+    var obj = {
+        "cracha": $("#cracha")[0].value,
+        "nome": $("#funcionario")[0].value,
+        "setor": $("#setor")[0].value
+    };
+
+    post(obj)
+}
 
 function mudarBarra(){
     if(barraAtiva){
@@ -55,4 +49,11 @@ function mudarBarra(){
         $("#btn-cadastrar")[0].style.display = "none";
     }
     barraAtiva = !barraAtiva
+}
+
+function procurarFuncionario(){
+    campo = $("#cracha")[0]
+    if(campo.value.length == 8){
+        getOne(campo.value)
+    }
 }

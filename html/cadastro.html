@@ -59,19 +59,19 @@
                     </div>
                     <div class="row">
                         <div class="flex form-floating">
-                            <input id="cracha" type="text" required class="form-control campos" maxlength="8">
+                            <input id="cracha" type="txt" required class="form-control campos" pattern="^[a-zA-Z0-9]+$" maxlength="8" onkeyup="procurarFuncionario()">
                             <label>Crachá:</label>
                         </div>
                     </div>
                     <div class="row">
                         <div class="flex form-floating">
-                            <input id="funcionario" type="text" disabled required class="form-control campos">
+                            <input id="funcionario" type="text" required class="form-control campos">
                             <label>Funcionário:</label>
                         </div>
                     </div>
                     <div class="row">
                         <div class="flex form-floating">
-                            <select id="setor" name="setor" class=" form-control campos" required disabled>
+                            <select id="setor" name="setor" class=" form-control campos" required>
                                 <option value="Vendas">Vendas</option>
                                 <option value="Almoxarifado">Almoxarifado</option>
                                 <option value="Departamento Pessoal">Departamento Pessoal</option>
