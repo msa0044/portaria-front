@@ -4,7 +4,7 @@ window.onload = function(){
 }
 
 function getOne(cracha){
-    $.get("http://localhost:8080/funcionario/get/id/"+cracha, function(resultado){
+    $.get("http://localhost:8080/funcionario/get/"+cracha, function(resultado){
         console.log(resultado);
         $("#funcionario").val(resultado.nome);
         $("#setor").val(resultado.setor);
@@ -17,27 +17,16 @@ function post(data) {
         url: "http://localhost:8080/funcionario/txt",
         data,
        })
-
-
-        // $.post(
-        // "http://localhost:8080/funcionario",
-        // JSON.stringify(data),
-        // function(data,status,xhr){
-        //     console.log(data);
-        //     console.log(status);
-        //     console.log(xhr.responseText);
-        // },
-        // "json")
 }
 
 function criarObjeto() {
-    var obj = {
+    var funcionario = {
         "cracha": $("#cracha")[0].value,
         "nome": $("#funcionario")[0].value,
         "setor": $("#setor")[0].value
     };
 
-    post(obj)
+    post(funcionario)
 }
 
 function mudarBarra(){
