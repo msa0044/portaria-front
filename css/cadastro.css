@@ -8,7 +8,14 @@ body {
     color: white;
 }
 
+#navbar {
+    position: sticky;
+    top: 0;
+    background-color: #fff;
+}
+
 .navbar *, h3 {
+    padding: 5px;
     color: rgb(12, 107, 75);
 }
 
@@ -124,7 +131,7 @@ option {
 
 }
 
-#img-logo{
+#img-logo {
     margin-right: 20px;
 }
 
@@ -143,7 +150,7 @@ option {
 }
 
 #div-meio {
-    padding: 40px;
+    padding: 0px 40px 40px 40px;
     background-color: #ffffff;
 }
 
@@ -151,10 +158,8 @@ option {
     background-color: #FFFFFF;
 }
 
-#tab {
-    border-radius: 5px 5px 0px 0px;
-    padding: 20px;
-    margin: 0px;
+#tab * {
+    font-size: 13px;
 }
 
 tr:nth-child(odd) {
@@ -164,4 +169,17 @@ tr:nth-child(odd) {
 #tr-titles {
     background-color: rgb(12, 107, 75);
     color: white;
+    padding: 0px;
+}
+
+#tr-titles th {
+    background-color: rgb(12, 107, 75);
+    color: white;
+    position: sticky;
+    top: 110px;
+    justify-content: space-evenly;
+}
+
+.rodape * {
+    color: rgb(12, 107, 75);
 }

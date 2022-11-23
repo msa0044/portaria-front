@@ -1,5 +1,3 @@
-let barraAtiva = false
-
 window.onload = function(){
 }
 
