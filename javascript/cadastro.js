@@ -10,32 +10,27 @@ function getOne(cracha){
 }
 
 function post(data) {
+    alert("post")
+    console.log("post")
     $.ajax({
-        method: "POST",
-        url: "http://localhost:8080/funcionario/txt",
-        data,
+        type: "POST",
+        url: "http://localhost:8080/funcionario",
+        dataType: "json",
+        contentType: "application/json; charset=utf-8",
+        data: JSON.stringify(data),
        })
 }
 
 function criarObjeto() {
+    alert("criar")
+    console.log("criar")
     var funcionario = {
         "cracha": $("#cracha")[0].value,
         "nome": $("#funcionario")[0].value,
         "setor": $("#setor")[0].value
     };
-
+    console.log(funcionario)
     post(funcionario)
-}
-
-function mudarBarra(){
-    if(barraAtiva){
-        $("#conteudo")[0].style.display = "none";
-        $("#btn-cadastrar")[0].style.display = "block";
-    }else if(!barraAtiva){
-        $("#conteudo")[0].style.display = "flex";
-        $("#btn-cadastrar")[0].style.display = "none";
-    }
-    barraAtiva = !barraAtiva
 }
 
 function procurarFuncionario(){
