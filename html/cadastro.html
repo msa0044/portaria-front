@@ -65,6 +65,15 @@
                         <form class="form col-12" onsubmit="criarObjeto()">
                             <div class="row">
                                 <div class="flex form-floating">
+                                    <select id="modalidade" name="modalidade" class="form-select campos" required>
+                                        <option value="BancoDeHoras">Banco de horas</option>
+                                        <option value="HoraExtra">Hora extra</option>
+                                    </select>
+                                    <label>Modalidade:</label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="flex form-floating">
                                     <input id="data" type="date" required max="9999-12-30" class="form-control campos"
                                         maxlength="10">
                                     <label>Data:</label>
@@ -105,28 +114,19 @@
                             </div>
                             <div class="row">
                                 <div class="flex form-floating col-6">
-                                    <input id="horaentrada" type="time" required class="form-control campos"
+                                    <input id="horaEntrada" type="time" required class="form-control campos"
                                         placeholder="horas">
                                     <label>Entrar às:</label>
                                 </div>
                                 <div class="flex form-floating col-6">
-                                    <input id="horaSaída" type="time" required" class="form-control campos"
+                                    <input id="horaSaida" type="time" required" class="form-control campos"
                                         placeholder="horas">
                                     <label>Sair às:</label>
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="flex form-floating">
-                                    <select id="modalidade" name="modalidade" class="form-select campos" required>
-                                        <option value="BancoDeHoras">Banco de horas</option>
-                                        <option value="HoraExtra">Hora extra</option>
-                                    </select>
-                                    <label>Modalidade:</label>
-                                </div>
-                            </div>
-                            <div class="row">
                                 <div class="flex form-floating col-12">
-                                    <input type="text" class="form-control campos observacao">
+                                    <input id="observacao" type="text" class="form-control campos observacao">
                                     <label>Observação:</label>
                                 </div>
                             </div>

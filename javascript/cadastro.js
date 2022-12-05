@@ -9,9 +9,7 @@ function getOne(cracha){
    })
 }
 
-function post(data) {
-    alert("post")
-    console.log("post")
+function postFuncionario(data) {
     $.ajax({
         type: "POST",
         url: "http://localhost:8080/funcionario",
@@ -21,16 +19,34 @@ function post(data) {
        })
 }
 
+function postEntrada(data) {
+    $.ajax({
+        type: "POST",
+        url: "http://localhost:8080/entrada",
+        dataType: "json",
+        contentType: "application/json; charset=utf-8",
+        data: JSON.stringify(data),
+       })
+}
+
 function criarObjeto() {
-    alert("criar")
-    console.log("criar")
     var funcionario = {
         "cracha": $("#cracha")[0].value,
         "nome": $("#funcionario")[0].value,
         "setor": $("#setor")[0].value
     };
-    console.log(funcionario)
-    post(funcionario)
+    postFuncionario(funcionario)
+    console.log($("#data")[0].value)
+    console.log($("#horaEntrada")[0].value)
+    var entrada = {
+        "funcionario": funcionario,
+        "modalidade": $("#modalidade")[0].value,
+        "data": $("#data")[0].value,
+        "entradaPrevista": $("#horaEntrada")[0].value,
+        "saidaPrevista": $("#horaSaida")[0].value,
+        "observacao": $("#observacao")[0].value
+    }
+    console.log(entrada)
 }
 
 function procurarFuncionario(){
