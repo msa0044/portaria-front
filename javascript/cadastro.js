@@ -44,17 +44,12 @@ function criarObjeto() {
     };
     postFuncionario(funcionario)
     var entrada = {
-        "id": null,
         "funcionario": funcionario,
         "modalidade": $("#modalidade")[0].value,
         "data": $("#data")[0].value,
         "entradaPrevista": $("#horaEntrada")[0].value,
         "saidaPrevista": $("#horaSaida")[0].value,
-        "observacao": $("#observacao")[0].value,
-        "horasPrevistas": null,
-        "entradaValidada": null,
-        "saidaValidada": null,
-        "horasValidadas": null
+        "observacao": $("#observacao")[0].value
     }
     postEntrada(entrada)
     console.log(entrada)
