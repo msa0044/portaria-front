@@ -1,12 +1,19 @@
-window.onload = function(){
+window.onload = function () {
 }
 
-function getOne(cracha){
-    $.get("http://localhost:8080/funcionario/get/"+cracha, function(resultado){
+function getOne(cracha) {
+    $.get("http://localhost:8080/funcionario/get/" + cracha, function (resultado) {
         console.log(resultado);
         $("#funcionario").val(resultado.nome);
         $("#setor").val(resultado.setor);
-   })
+    })
+}
+
+function procurarFuncionario() {
+    campo = $("#cracha")[0]
+    if (campo.value.length == 8) {
+        getOne(campo.value)
+    }
 }
 
 function postFuncionario(data) {
@@ -16,7 +23,7 @@ function postFuncionario(data) {
         dataType: "json",
         contentType: "application/json; charset=utf-8",
         data: JSON.stringify(data),
-       })
+    })
 }
 
 function postEntrada(data) {
@@ -26,7 +33,7 @@ function postEntrada(data) {
         dataType: "json",
         contentType: "application/json; charset=utf-8",
         data: JSON.stringify(data),
-       })
+    })
 }
 
 function criarObjeto() {
@@ -36,22 +43,19 @@ function criarObjeto() {
         "setor": $("#setor")[0].value
     };
     postFuncionario(funcionario)
-    console.log($("#data")[0].value)
-    console.log($("#horaEntrada")[0].value)
     var entrada = {
+        "id": null,
         "funcionario": funcionario,
         "modalidade": $("#modalidade")[0].value,
         "data": $("#data")[0].value,
         "entradaPrevista": $("#horaEntrada")[0].value,
         "saidaPrevista": $("#horaSaida")[0].value,
-        "observacao": $("#observacao")[0].value
+        "observacao": $("#observacao")[0].value,
+        "horasPrevistas": null,
+        "entradaValidada": null,
+        "saidaValidada": null,
+        "horasValidadas": null
     }
+    postEntrada(entrada)
     console.log(entrada)
-}
-
-function procurarFuncionario(){
-    campo = $("#cracha")[0]
-    if(campo.value.length == 8){
-        getOne(campo.value)
-    }
 }
