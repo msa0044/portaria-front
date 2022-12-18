@@ -10,6 +10,7 @@ body {
 
 #navbar {
     position: sticky;
+    z-index: 2;
     top: 0;
     background-color: #fff;
 }
@@ -176,6 +177,7 @@ tr:nth-child(odd) {
     background-color: rgb(12, 107, 75);
     color: white;
     position: sticky;
+    z-index: 1;
     top: 110px;
     justify-content: space-evenly;
 }
