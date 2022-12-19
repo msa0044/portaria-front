@@ -7,8 +7,8 @@ function getOneFuncionario(cracha) {
 
 function toDate(milissegundos) {
     dateFormat = new Date(milissegundos)
-    return zeroLeft(2,dateFormat.getDate()) +
-        "/" + zeroLeft(2,(dateFormat.getMonth() + 1)) +
+    return zeroLeft(2, dateFormat.getDate()) +
+        "/" + zeroLeft(2, (dateFormat.getMonth() + 1)) +
         "/" + dateFormat.getFullYear()
 }
 
@@ -20,7 +20,7 @@ function toHour(milissegundos) {
 
 function zeroLeft(tamanho, numero) {
     var a = ""
-    if ((numero+"").length < tamanho) {
+    if ((numero + "").length < tamanho) {
         while (a.length + 1 < tamanho) {
             a += "0"
         }
@@ -30,33 +30,71 @@ function zeroLeft(tamanho, numero) {
     }
 }
 
-function getAllEntradas(cracha) {
-    $.get("http://localhost:8080/entrada/get/all", function (resultado) {
-        resultado.forEach(function (entrada) {
-            let row = $("<tr>")
-            let col
-            let dateFormat
+function getAllEntradas() {
+    $.ajax({
+        method: "GET",
+        url: "http://localhost:8080/entrada/get/all"
+    }
+    )
+        .done(function (resultado) {
+            resultado.forEach(function (entrada) {
+                var row = $("<tr>")
+                var col
+                var dateFormat
 
-            col += ("<td>" + entrada.id + "</td>")
-            col += ("<td>" + toDate(entrada.data) + "</td>")
-            col += ("<td>" + zeroLeft(8, entrada.funcionario.cracha) + "</td>")
-            col += ("<td>" + entrada.funcionario.nome + "</td>")
-            col += ("<td>" + entrada.funcionario.setor + "</td>")
-            col += ("<td>" + entrada.modalidade + "</td>")
-            col += ("<td>" + toHour(entrada.entradaPrevista) + "</td>")
-            col += ("<td>" + toHour(entrada.saidaPrevista) + "</td>")
-            col += ("<td>" + toHour(entrada.entradaValidada) + "</td>")
-            col += ("<td>" + toHour(entrada.saidaValidada) + "</td>")
-            col += ("<td>" + toHour(entrada.horas) + "</td>")
-            col += ("<td>" + entrada.observacao + "</td>")
+                col += ("<td>" + entrada.id + "</td>")
+                col += ("<td>" + toDate(entrada.data) + "</td>")
+                col += ("<td>" + zeroLeft(8, entrada.funcionario.cracha) + "</td>")
+                col += ("<td>" + entrada.funcionario.nome + "</td>")
+                col += ("<td>" + entrada.funcionario.setor + "</td>")
+                col += ("<td>" + entrada.modalidade + "</td>")
+                col += ("<td>" + toHour(entrada.entradaPrevista) + "</td>")
+                col += ("<td>" + toHour(entrada.saidaPrevista) + "</td>")
+                col += ("<td>" + toHour(entrada.entradaValidada) + "</td>")
+                col += ("<td>" + toHour(entrada.saidaValidada) + "</td>")
+                col += ("<td>" + toHour(entrada.horas) + "</td>")
+                col += ("<td>" + entrada.observacao + "</td>")
 
-            col += ("<td>" + "<i class='fa fa-trash'></i>" + "</td>")
-            col += ("<td>" + "<i class='fa fa-pencil'></i>" + "</td>")
+                col += ("<td>" + "<i class='fa fa-trash'></i>" + "</td>")
+                col += ("<td>" + "<i class='fa fa-pencil'></i>" + "</td>")
 
-            row.append(col)
-            $("#tab").append(row)
+                row.append(col)
+                $("#tab").append(row)
+            })
         })
-    })
+        .fail(function (erro) {
+            alert("Erro no servidor ao tentar pegar informações das entradas...")
+            console.log(erro.responseJSON)
+        })
+}
+
+function getAllFuncionarios() {
+    $.ajax({
+        method: "GET",
+        url: "http://localhost:8080/funcionario/get/all"
+    }
+    )
+        .done(function (resultado) {
+            resultado.forEach(function (funcionario) {
+                var row = $("<tr>")
+                var col
+                var dateFormat
+
+                col += ("<td>" + funcionario.cracha + "</td>")
+                col += ("<td>" + funcionario.nome + "</td>")
+                col += ("<td>" + funcionario.setor + "</td>")
+
+                col += ("<td>" + "<i class='fa fa-trash'></i>" + "</td>")
+                col += ("<td>" + "<i class='fa fa-pencil'></i>" + "</td>")
+
+                row.append(col)
+                $("#tab-funcionarios").append(row)
+            })
+        })
+        .fail(function (erro) {
+            alert("Erro no servidor ao tentar pegar informações dos funcionarios...")
+            console.log(erro.responseJSON)
+        })
 }
 
 function procurarFuncionario() {
@@ -68,7 +106,7 @@ function procurarFuncionario() {
 
 function postFuncionario(data) {
     $.ajax({
-        type: "POST",
+        method: "POST",
         url: "http://localhost:8080/funcionario",
         dataType: "json",
         contentType: "application/json; charset=utf-8",
@@ -78,7 +116,7 @@ function postFuncionario(data) {
 
 function postEntrada(data) {
     $.ajax({
-        type: "POST",
+        method: "POST",
         url: "http://localhost:8080/entrada",
         dataType: "json",
         contentType: "application/json; charset=utf-8",
@@ -92,7 +130,6 @@ function criarObjeto() {
         "nome": $("#funcionario")[0].value,
         "setor": $("#setor")[0].value
     };
-    postFuncionario(funcionario)
     var entrada = {
         "data": $("#data")[0].value,
         "funcionario": funcionario,
@@ -106,4 +143,5 @@ function criarObjeto() {
 
 window.onload = function () {
     getAllEntradas()
+    getAllFuncionarios()
 }

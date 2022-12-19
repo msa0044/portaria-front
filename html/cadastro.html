@@ -30,26 +30,10 @@
         <div class="container-fluid">
             <a class="navbar-brand" id="portaria" href="#">
                 <div id="logo">
-                    <img src="../imgs/logo.png" id="img-logo" alt="" width="200"
-                        class="d-inline-block">
-                        Portaria
+                    <img src="../imgs/logo.png" id="img-logo" alt="" width="200" class="d-inline-block">
+                    Portaria
                 </div>
             </a>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                            aria-expanded="false">
-                            Cadastro
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" data-toggle="modal" data-target="#modal-entrada">
-                                    Cadastrar Entrada</a></li>
-                            <li><a class="dropdown-item" href="#">Cadastrar Funcionário</a></li>
-                        </ul>
-                    </li>
-                </ul>
-            </div>
         </div>
     </nav>
 
@@ -134,69 +118,130 @@
                     </div>
                     <div id="btns-cadastro" class="flex modal-footer">
                         <button type="button" id="btn-fechar" class="btn btn-danger" data-dismiss="modal"><i
-                                class="fa fa-close"></i>Fechar</button>
-                        <button type="button" id="btn-cadastrar" class="btn btn-success" onclick="criarObjeto()"><i class="fa fa-add"></i>Adicionar</button>
+                                class="fa fa-close"></i> Fechar</button>
+                        <button type="button" id="btn-cadastrar" class="btn btn-success" onclick="criarObjeto()"><i
+                                class="fa fa-add"></i> Adicionar</button>
                     </div>
                 </div>
             </div>
         </div>
     </div>
     <div id="div-meio" class="col-12">
-        <div id="div-table" class="col-12">
-            <table id="tab" class="table     col-12">
-                <tr id="tr-titles" class="table-">
-                    <th>
-                        Id
-                    </th>
-                    <th>
-                        Data
-                    </th>
-                    <th>
-                        Crachá
-                    </th>
-                    <th>
-                        Funcionário
-                    </th>
-                    <th>
-                        Setor
-                    </th>
-                    <th>
-                        Modalidade
-                    </th>
-                    <th>
-                        Entrada prevista
-                    </th>
-                    <th>
-                        Saída prevista
-                    </th>
-                    <th>
-                        Entrada validada
-                    </th>
-                    <th>
-                        Saída validada
-                    </th>
-                    <th>
-                        Horas validadas
-                    </th>
-                    <th>
-                        Observação
-                    </th>
-                    <th>
-                        Excluir
-                    </th>
-                    <th>
-                        Editar
-                    </th>
-                </tr>
-            </table>
+
+
+
+
+
+        <div class="accordion" id="accordionEntrada">
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="accordionItemEntrada">
+                    <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#divAccordionEntrada" aria-expanded="true"
+                        aria-controls="divAccordionEntrada">
+                        Tabela de entradas
+                    </button>
+                </h2>
+                <div id="divAccordionEntrada" class="accordion-collapse collapse show"
+                    aria-labelledby="panelsStayOpen-headingOne">
+                    <div class="accordion-body">
+                        
+                        <button class="btn accordion-cadastrar" data-toggle="modal" data-target="#modal-entrada">Cadastrar nova entrada <i
+                            class="fa fa-add"></i></button>
+
+                        <div id="div-table" class="col-12">
+                            <table id="tab" class="table tables col-12">
+                                <tr class="tr-titles">
+                                    <th>
+                                        Id
+                                    </th>
+                                    <th>
+                                        Data
+                                    </th>
+                                    <th>
+                                        Crachá
+                                    </th>
+                                    <th>
+                                        Funcionário
+                                    </th>
+                                    <th>
+                                        Setor
+                                    </th>
+                                    <th>
+                                        Modalidade
+                                    </th>
+                                    <th>
+                                        Entrada prevista
+                                    </th>
+                                    <th>
+                                        Saída prevista
+                                    </th>
+                                    <th>
+                                        Entrada validada
+                                    </th>
+                                    <th>
+                                        Saída validada
+                                    </th>
+                                    <th>
+                                        Horas validadas
+                                    </th>
+                                    <th>
+                                        Observação
+                                    </th>
+                                    <th>
+                                        Excluir
+                                    </th>
+                                    <th>
+                                        Editar
+                                    </th>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="panelsStayOpen-headingTwo">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#panelsStayOpen-collapseTwo" aria-expanded="false"
+                            aria-controls="panelsStayOpen-collapseTwo">
+                            Tabela de funcionários
+                        </button>
+                    </h2>
+                    <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse"
+                        aria-labelledby="panelsStayOpen-headingTwo">
+                        <div class="accordion-body">
+                            <table id="tab-funcionarios" class="table tables col-12">
+                                <tr class="tr-titles">
+                                    <th>
+                                        Crachá
+                                    </th>
+                                    <th>
+                                        Nome
+                                    </th>
+                                    <th>
+                                        Setor
+                                    </th>
+                                    <th>
+                                        Excluir
+                                    </th>
+                                    <th>
+                                        Editar
+                                    </th>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
+    </div>
     </div>
 
     <footer class="rodape py-3 my-4">
-        <ul class="nav justify-content-center border-bottom pb-3 mb-3">
-          <li class="nav-item"><a href="#" class="nav-link px-2">Site</a></li>
-          <li class="nav-item"><a href="https://www.instagram.com/marcossimoesaraujo/" class="nav-link px-2" target="_blank">Desenvolvedor </a></li>
-          <li class="nav-item"><a href="#" class="nav-link px-2">Sobre</a></li>
+        <ul class="nav justify-content-center pb-3 mb-3">
+            <li class="nav-item"><a href="#" class="nav-link px-2">Site</a></li>
+            <li class="nav-item"><a href="https://www.instagram.com/marcossimoesaraujo/" class="nav-link px-2"
+                    target="_blank">Desenvolvedor </a></li>
+            <li class="nav-item"><a href="#" class="nav-link px-2">Sobre</a></li>
         </ul>
         <p class="text-center">Wapmetal Industria e Comercio de Molas e Estampados Ltda 2022</p>
     </footer>
