@@ -21,7 +21,7 @@ function toHour(milissegundos) {
 function zeroLeft(tamanho, numero) {
     var a = ""
     if ((numero + "").length < tamanho) {
-        while (a.length + 1 < tamanho) {
+        while (a.length < tamanho-(numero + "").length) {
             a += "0"
         }
         return a += numero
@@ -38,7 +38,7 @@ function getAllEntradas() {
     )
         .done(function (resultado) {
             resultado.forEach(function (entrada) {
-                var row = $("<tr>")
+                var row = $("<tr class='table-row'>")
                 var col
                 var dateFormat
 
@@ -55,8 +55,8 @@ function getAllEntradas() {
                 col += ("<td>" + toHour(entrada.horas) + "</td>")
                 col += ("<td>" + entrada.observacao + "</td>")
 
-                col += ("<td>" + "<i class='fa fa-trash'></i>" + "</td>")
-                col += ("<td>" + "<i class='fa fa-pencil'></i>" + "</td>")
+                col += ("<td onmouseup='deleteEntrada("+entrada.id+")'>" + "<i class='fa fa-trash'></i>" + "</td>")
+                col += ("<td onmouseup='updateEntrada("+entrada.id+")'>" + "<i class='fa fa-pencil'></i>" + "</td>")
 
                 row.append(col)
                 $("#tab").append(row)
@@ -76,16 +76,16 @@ function getAllFuncionarios() {
     )
         .done(function (resultado) {
             resultado.forEach(function (funcionario) {
-                var row = $("<tr>")
+                var row = $("<tr class='table-row'>")
                 var col
                 var dateFormat
 
-                col += ("<td>" + funcionario.cracha + "</td>")
+                col += ("<td>" + zeroLeft(8, funcionario.cracha) + "</td>")
                 col += ("<td>" + funcionario.nome + "</td>")
                 col += ("<td>" + funcionario.setor + "</td>")
 
-                col += ("<td>" + "<i class='fa fa-trash'></i>" + "</td>")
-                col += ("<td>" + "<i class='fa fa-pencil'></i>" + "</td>")
+                col += ("<td onmouseup='deleteFuncionario("+funcionario.cracha+")'>" + "<i class='fa fa-trash'></i>" + "</td>")
+                col += ("<td onmouseup='updateFuncionario("+funcionario.cracha+")'>" + "<i class='fa fa-pencil'></i>" + "</td>")
 
                 row.append(col)
                 $("#tab-funcionarios").append(row)
@@ -112,6 +112,15 @@ function postFuncionario(data) {
         contentType: "application/json; charset=utf-8",
         data: JSON.stringify(data),
     })
+        .done(function (success) {
+            alert("Funcionário salvo com sucesso!");
+        })
+        .fail(function (erro) {
+            alert("Erro no servidor ao tentar pegar informações dos funcionarios...")
+        })
+        .always(function (complete) {
+            console.log(complete.responseJSON)
+        })
 }
 
 function postEntrada(data) {
@@ -121,6 +130,29 @@ function postEntrada(data) {
         dataType: "json",
         contentType: "application/json; charset=utf-8",
         data: JSON.stringify(data),
+    })
+        .done(function (success) {
+            alert("Entrada salva com sucesso!");
+        })
+        .fail(function (erro) {
+            alert("Erro ao tentar salvar a Entrada.\nErro: " + erro.responseJSON.error)
+        })
+        .always(function (complete) {
+            console.log(complete)
+        })
+}
+
+function deleteFuncionario(cracha){
+    $.ajax({
+        method: "DELETE",
+        url: "http://localhost:8080/funcionario/delete/"+cracha,
+    })
+}
+
+function deleteEntrada(id){
+    $.ajax({
+        method: "DELETE",
+        url: "http://localhost:8080/entrada/delete/"+id,
     })
 }
 
